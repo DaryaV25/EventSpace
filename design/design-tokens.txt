@@ -1,0 +1,36 @@
+===============================
+EVENTSPACE — DESIGN TOKENS
+===============================
+
+🎨 COLORS
+
+Primary: #1A1A1A
+Accent: #E63946
+Background: #FFFFFF
+Secondary Background: #F5F5F5
+Text Primary: #111111
+Text Secondary: #666666
+Border: #E0E0E0
+
+
+🔤 FONTS
+
+Main font: Inter
+Headings font: Inter
+Base font size: 16px
+H1: 64px
+H2: 40px
+H3: 24px
+
+
+📏 SPACING
+
+Section padding: 80px
+Container width: 1200px
+Card gap: 24px
+
+
+🧱 BORDER RADIUS
+
+Buttons: 8px
+Cards: 12px
