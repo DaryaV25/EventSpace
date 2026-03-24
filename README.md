@@ -17,4 +17,5 @@ EventSpace — это веб-приложение для организации 
 ## Ссылки
 
 - **Figma-макет**: [https://www.figma.com/design/I2VxALhinTiT3tBt6mmMiK/EventSpace?node-id=12-21&t=TWrzKreXPPbOf3OD-1]
-- **Репозиторий**: [https://github.com/DaryaV25/EventSpace]
+- # **Репозиторий**: [https://github.com/DaryaV25/EventSpace]
+- **Репозиторий**: [https://github.com/DaryaV25/EventSpace](https://github.com/DaryaV25/EventSpace)
