@@ -11,21 +11,19 @@
     <header class="header">
       <div class="container header__inner">
         <div class="burger-icon" id="burger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <nav class="menu" id="menu" aria-label="Основная навигация">
+        <nav class="menu menu--left" id="menu-left">
           <a href="#events">мероприятия</a>
           <a href="#cities">локации</a>
           <a href="#offer">услуги</a>
         </nav>
-
         <div class="logo">EventSpace</div>
-
-        <nav class="menu" aria-label="Дополнительная навигация">
-          <a href="#">о нас</a>
-          <a href="#">контакты</a>
+        <nav class="menu menu--right" id="menu-right">
+          <a href="#intro">о нас</a>
+          <a href="#footer__title">контакты</a>
           <span class="lang">EN | РУС</span>
         </nav>
       </div>
@@ -57,7 +55,7 @@
       </section>
 
       <!-- ================= INTRO ================= -->
-      <section class="intro">
+      <section id="intro">
         <div class="container intro__container">
           <header>
             <h2 class="intro__title">выйди за рамки обычного мероприятия</h2>
@@ -325,7 +323,7 @@
     <!-- ================= FOOTER ================= -->
 
     <footer class="footer" itemscope itemtype="https://schema.org/Organization">
-      <div class="footer__title">
+      <div id="footer__title">
         ОТМЕЧАЙ EVENTSPACE И СТАНОВИСЬ ЧАСТЬЮ НАШЕЙ ИСТОРИИ
       </div>
 
@@ -431,12 +429,15 @@
       <meta itemprop="foundingDate" content="2023" />
     </footer>
     <script>
-        const burgerIcon = document.getElementById('burger-icon');
-        const menu = document.getElementById('menu');
+      const burgerIcon = document.getElementById('burger-icon');
+      const menuLeft = document.getElementById('menu-left');
+      const menuRight = document.getElementById('menu-right');
 
-        burgerIcon.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
+      burgerIcon.addEventListener('click', () => {
+        menuLeft.classList.toggle('active');
+        menuRight.classList.toggle('active');
+        burgerIcon.classList.toggle('active');
+      });
     </script>
   </body>
 </html>

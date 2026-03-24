@@ -1,22 +1,12 @@
-
 :root {
   --color-bg-main: #fffaf0;
   --color-text-dark: #334323;
   --color-text-light: #fff7e8;
   --color-accent-1: #556b2f;
   --color-accent-2: #52341d;
-  --font-main: 'Montserrat', sans-serif;
+  --font-main: 'Century Gothic', sans-serif;
   --font-title: 'Eugusto Free Personal Use', serif;
   --container-width: 1200px;
-}
-
-@font-face {
-  font-family: 'Eugusto Free Personal Use';
-  src:
-    url('../fonts/Eugusto-Free.woff2') format('woff2'),
-    url('../fonts/Eugusto-Free.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
 }
 
 * {
@@ -42,10 +32,16 @@ section {
 }
 
 h1,
-h2,
-h3 {
-  font-family: var(--font-title);
+h2 {
+  font-family: 'Eugusto Free Personal Use';
   text-transform: uppercase;
+  font-weight: 500;
+}
+h3 {
+  font-family: 'Eugusto Free Personal Use';
+  text-transform: uppercase;
+  letter-spacing: +1px;
+  font-weight: 600;
 }
 
 button {
