@@ -1,143 +1,164 @@
-
 /* ================= FOOTER ================= */
 
 .footer {
   background: #52341d;
   color: #fff7e8;
-  padding: 80px 0 60px;
+  padding: 100px 0 50px;
   position: relative;
 }
 
-/* верхний заголовок */
+/* Большой заголовок */
 .footer__title {
   text-align: center;
-  font-size: 28px;
-  letter-spacing: 0.05em;
-  margin-bottom: 40px;
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  margin-bottom: 50px;
+  color: #fff7e8;
 }
 
-/* декоративные карточки */
+/* Декоративная галерея */
 .footer__gallery {
   display: flex;
   justify-content: center;
-  gap: 14px;
-  margin-bottom: 80px;
+  gap: 16px;
+  margin-bottom: 90px;
+  flex-wrap: wrap;
 }
 
 .footer__gallery span {
-  width: 90px;
-  height: 130px;
-  border-radius: 4px;
+  width: 82px;
+  height: 118px;
+  border-radius: 8px;
   background: #d8cdb8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .footer__gallery span:nth-child(odd) {
   background: #7b8a6b;
 }
-
 .footer__gallery span:nth-child(3n) {
   background: #9a6f4e;
 }
-
 .footer__gallery span:nth-child(5n) {
   background: #fff7e8;
 }
 
-/* основная сетка */
+/* Основная сетка на 3 колонки */
 .footer__grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 64px;
   align-items: start;
 }
 
-/* подписка */
-.footer__subscribe h3 {
-  font-size: 26px;
-  margin-bottom: 15px;
+/* Логотип и слоган (сдвинуты вправо) */
+.footer__brand {
+  margin-left: 60px; /* Тот самый сдвиг */
 }
 
-.footer__subscribe p {
-  font-size: 14px;
-  max-width: 420px;
+.footer__brand .footer__logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  color: #fff7e8;
+  margin-bottom: 12px;
+}
+
+.footer__slogan {
+  font-size: 17px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Общие стили для заголовков в колонках */
+.footer__menu h4,
+.footer__contacts h4 {
+  font-size: 15px;
   margin-bottom: 25px;
-}
-
-.footer__subscribe input[type='email'] {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #fff7e8;
-  padding: 10px 0;
-  color: #fff7e8;
-  margin-bottom: 20px;
-}
-
-.footer__subscribe input::placeholder {
-  color: rgba(255, 247, 232, 0.6);
-}
-
-.footer__checkbox {
-  font-size: 12px;
-  display: flex;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-.footer__btn {
-  background: #fff7e8;
-  color: #52341d;
-  border: none;
-  border-radius: 40px;
-  padding: 14px 32px;
   font-weight: 600;
-  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff7e8;
 }
 
-/* меню */
-.footer__menu,
-.footer__policy {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footer__menu a,
-.footer__policy a {
+/* Навигация */
+.footer__menu a {
+  display: block;
   color: #fff7e8;
   text-decoration: none;
-  font-size: 14px;
+  margin-bottom: 14px;
+  transition: color 0.2s;
 }
 
-/* соцсети */
-.footer__socials {
-  position: absolute;
-  right: 60px;
-  bottom: 40px;
-  display: flex;
-  gap: 12px;
+.footer__menu a:hover {
+  color: #d8cdb8;
 }
 
-.footer__socials a {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #fff7e8;
-  color: #52341d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
+/* Контакты */
+.footer__contacts address {
+  font-style: normal;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.footer__contact-links a {
+  display: block;
+  color: #fff7e8;
   text-decoration: none;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.footer__contact-links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Нижняя часть (Копирайт) */
+.footer__bottom {
+  border-top: 1px solid rgba(255, 247, 232, 0.15);
+  margin-top: 60px;
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px 40px;
+  }
+  .footer__brand {
+    margin-left: 0; /* Убираем сдвиг на планшетах */
+  }
 }
 
 @media (max-width: 768px) {
-    .footer__grid {
-        grid-template-columns: 1fr;
-    }
+  .footer__title {
+    font-size: 34px;
+  }
 
-    .footer__socials {
-        position: static;
-        margin-top: 40px;
-    }
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    text-align: center;
+  }
+
+  .footer__brand {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+  }
 }
