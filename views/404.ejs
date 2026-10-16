@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<section class="page">
+  <div class="container">
+    <div class="card">
+      <p class="card__code">404</p>
+      <h1>Страница не найдена</h1>
+      <p>По адресу <code><%= url %></code> ничего нет.</p>
+
+      <div class="btn-row">
+        <a class="btn" href="/<%= authQuery %>">на главную</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

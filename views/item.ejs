@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+
+<section class="page">
+  <div class="container">
+    <a class="back-link" href="/<%= authQuery %>">← ко всем мероприятиям</a>
+
+    <article class="item">
+      <figure class="item__image">
+        <img src="<%= event.image %>" alt="<%= event.title %>" />
+      </figure>
+
+      <div class="item__info">
+        <p class="section-label">мероприятие #<%= event.id %></p>
+        <h1 class="item__title"><%= event.title %></h1>
+        <p class="item__text"><%= event.description %></p>
+
+        <ul class="item__list">
+          <li>Дата: <%= event.date.split('-').reverse().join('.') %> в <%= event.time %></li>
+          <li>Город: <%= event.city %></li>
+          <li>Адрес: <%= event.address %></li>
+        </ul>
+
+        <p class="item__price">Стоимость: <%= event.price %> BYN</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

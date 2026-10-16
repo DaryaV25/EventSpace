@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<section class="page">
+  <div class="container">
+    <div class="card">
+      <p class="card__code">Вход</p>
+      <h1>Имитация авторизации</h1>
+      <p>
+        Чтобы стать «Пользователем», добавьте к адресу страницы параметр
+        <code>?auth=1</code>. Без него middleware устанавливает
+        <code>req.user = { name: 'Гость' }</code>.
+      </p>
+
+      <div class="btn-row">
+        <a class="btn" href="/add?auth=1">войти и добавить мероприятие</a>
+        <a class="btn btn--light" href="/">вернуться на главную</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

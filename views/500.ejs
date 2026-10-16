@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<section class="page">
+  <div class="container">
+    <div class="card">
+      <p class="card__code">500</p>
+      <h1>Ошибка сервера</h1>
+      <p>При обработке запроса произошла ошибка:</p>
+      <p><code><%= message %></code></p>
+
+      <div class="btn-row">
+        <a class="btn" href="/<%= authQuery %>">на главную</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

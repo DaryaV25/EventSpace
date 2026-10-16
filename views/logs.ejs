@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+<section class="page">
+  <div class="container">
+    <p class="section-label">журнал событий</p>
+    <h1 class="page__title">Логи из базы данных</h1>
+    <p class="page__text">
+      Каждый запрос к серверу записывается middleware в таблицу
+      <code>logs</code> (SQLite, файл logs.db). Последних записей: <%= logs.length %>
+    </p>
+
+    <table class="logs">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Метод</th>
+          <th>URL</th>
+          <th>Статус</th>
+          <th>Время, мс</th>
+          <th>Дата и время</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% logs.forEach(function (log) { %>
+          <tr>
+            <td><%= log.id %></td>
+            <td><%= log.method %></td>
+            <td><%= log.url %></td>
+            <td><%= log.status %></td>
+            <td><%= log.duration %></td>
+            <td><%= log.created_at %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

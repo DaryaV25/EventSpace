@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <figure class="hero__image">
+    <img src="/images/first.png" alt="Интерьер пространства EventSpace" />
+  </figure>
+  <div class="hero__content">
+    <div class="container">
+      <article class="hero__card">
+        <span class="hero__label">пространство</span>
+        <h1 class="hero__title">EventSpace</h1>
+        <p class="hero__subtitle">для вдохновения,<br />общения и новых смыслов</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="container">
+    <p class="section-label">наши мероприятия</p>
+    <h1 class="page__title">Ближайшие события</h1>
+    <p class="page__text">Всего в списке: <%= events.length %></p>
+
+    <% if (events.length === 0) { %>
+      <p class="page__text">Пока нет ни одного мероприятия.</p>
+    <% } else { %>
+      <div class="events-grid">
+        <% events.forEach(function (event) { %>
+          <%- include('partials/event-card', { event: event }) %>
+        <% }); %>
+      </div>
+    <% } %>
+
+    <div class="btn-row">
+      <a class="btn" href="/add<%= authQuery %>">добавить мероприятие</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

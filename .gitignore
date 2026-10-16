@@ -1,1 +1,5 @@
 node_modules/
+
+# файл базы данных с логами
+logs.db
+logs.db-journal

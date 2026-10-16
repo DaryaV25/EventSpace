@@ -1,0 +1,74 @@
+<%- include('partials/header') %>
+
+<section class="page">
+  <div class="container">
+    <p class="section-label">новое мероприятие</p>
+    <h1 class="page__title">Добавить мероприятие</h1>
+
+    <form class="form" action="/add<%= authQuery %>" method="POST">
+      <label for="title">Название</label>
+      <input
+        id="title"
+        name="title"
+        type="text"
+        required
+        placeholder="Нетворкинг вечер"
+      />
+
+      <div class="form__row">
+        <div>
+          <label for="date">Дата</label>
+          <input id="date" name="date" type="date" required />
+        </div>
+        <div>
+          <label for="time">Время</label>
+          <input id="time" name="time" type="time" required />
+        </div>
+      </div>
+
+      <div class="form__row">
+        <div>
+          <label for="city">Город</label>
+          <input id="city" name="city" type="text" required placeholder="Минск" />
+        </div>
+        <div>
+          <label for="address">Адрес</label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            required
+            placeholder="ул. Примерная, 12"
+          />
+        </div>
+      </div>
+
+      <div class="form__row">
+        <div>
+          <label for="price">Стоимость, BYN</label>
+          <input id="price" name="price" type="number" min="0" value="0" />
+        </div>
+        <div>
+          <label for="image">Изображение</label>
+          <select id="image" name="image">
+            <option value="/images/event1.png">Вариант 1</option>
+            <option value="/images/event2.png">Вариант 2</option>
+            <option value="/images/event3.png">Вариант 3</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="description">Описание</label>
+      <textarea
+        id="description"
+        name="description"
+        required
+        placeholder="Коротко о мероприятии"
+      ></textarea>
+
+      <button class="btn" type="submit">добавить</button>
+    </form>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
