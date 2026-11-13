@@ -6,69 +6,163 @@
     <h1 class="page__title">Добавить мероприятие</h1>
 
     <form class="form" action="/add<%= authQuery %>" method="POST">
-      <label for="title">Название</label>
+      <% if (Object.keys(errors).length > 0) { %>
+        <p class="form__error form__error--top">
+          Проверьте правильность заполнения полей
+        </p>
+      <% } %>
+
+      <label for="title">
+        Название <span class="form__hint">3-60 символов, с буквами</span>
+        <span class="form__count" id="count-title">0 / 60</span>
+      </label>
       <input
         id="title"
         name="title"
         type="text"
         required
+        minlength="3"
+        maxlength="60"
+        pattern=".*[A-Za-zА-Яа-яЁёІіЎў].*"
+        title="От 3 до 60 символов, должна быть хотя бы одна буква"
+        value="<%= values.title || '' %>"
         placeholder="Нетворкинг вечер"
       />
+      <% if (errors.title) { %>
+        <p class="form__error"><%= errors.title %></p>
+      <% } %>
 
       <div class="form__row">
         <div>
-          <label for="date">Дата</label>
-          <input id="date" name="date" type="date" required />
+          <label for="date">Дата <span class="form__hint">не раньше сегодня</span></label>
+          <input
+            id="date"
+            name="date"
+            type="date"
+            required
+            min="<%= new Date().toISOString().slice(0, 10) %>"
+            value="<%= values.date || '' %>"
+          />
+          <% if (errors.date) { %>
+            <p class="form__error"><%= errors.date %></p>
+          <% } %>
         </div>
         <div>
           <label for="time">Время</label>
-          <input id="time" name="time" type="time" required />
+          <input
+            id="time"
+            name="time"
+            type="time"
+            required
+            value="<%= values.time || '' %>"
+          />
+          <% if (errors.time) { %>
+            <p class="form__error"><%= errors.time %></p>
+          <% } %>
         </div>
       </div>
 
       <div class="form__row">
         <div>
-          <label for="city">Город</label>
-          <input id="city" name="city" type="text" required placeholder="Минск" />
+          <label for="city">
+            Город <span class="form__hint">только буквы, 2-30</span>
+            <span class="form__count" id="count-city">0 / 30</span>
+          </label>
+          <input
+            id="city"
+            name="city"
+            type="text"
+            required
+            minlength="2"
+            maxlength="30"
+            pattern="[A-Za-zА-Яа-яЁёІіЎў \-]+"
+            title="Только буквы, пробел и дефис, от 2 до 30 символов"
+            value="<%= values.city || '' %>"
+            placeholder="Минск"
+          />
+          <% if (errors.city) { %>
+            <p class="form__error"><%= errors.city %></p>
+          <% } %>
         </div>
         <div>
-          <label for="address">Адрес</label>
+          <label for="address">
+            Адрес <span class="form__hint">5-60 символов, с буквами</span>
+            <span class="form__count" id="count-address">0 / 60</span>
+          </label>
           <input
             id="address"
             name="address"
             type="text"
             required
+            minlength="5"
+            maxlength="60"
+            pattern=".*[A-Za-zА-Яа-яЁёІіЎў].*"
+            title="От 5 до 60 символов, хотя бы одна буква"
+            value="<%= values.address || '' %>"
             placeholder="ул. Примерная, 12"
           />
+          <% if (errors.address) { %>
+            <p class="form__error"><%= errors.address %></p>
+          <% } %>
         </div>
       </div>
 
       <div class="form__row">
         <div>
-          <label for="price">Стоимость, BYN</label>
-          <input id="price" name="price" type="number" min="0" value="0" />
+          <label for="price">
+            Стоимость, BYN
+            <span class="form__count" id="count-price">0 / 5</span>
+          </label>
+          <input
+            id="price"
+            name="price"
+            type="text"
+            required
+            inputmode="decimal"
+            maxlength="5"
+            pattern="\d{1,2}(,\d{1,2})?"
+            title="Деньги в формате 00,00: две цифры до запятой и две после"
+            value="<%= values.price || '' %>"
+            placeholder="00,00"
+          />
+          <% if (errors.price) { %>
+            <p class="form__error"><%= errors.price %></p>
+          <% } %>
         </div>
         <div>
           <label for="image">Изображение</label>
           <select id="image" name="image">
-            <option value="/images/event1.png">Вариант 1</option>
-            <option value="/images/event2.png">Вариант 2</option>
-            <option value="/images/event3.png">Вариант 3</option>
+            <option value="/images/event1.png" <%= values.image === '/images/event1.png' ? 'selected' : '' %>>Вариант 1</option>
+            <option value="/images/event2.png" <%= values.image === '/images/event2.png' ? 'selected' : '' %>>Вариант 2</option>
+            <option value="/images/event3.png" <%= values.image === '/images/event3.png' ? 'selected' : '' %>>Вариант 3</option>
           </select>
+          <% if (errors.image) { %>
+            <p class="form__error"><%= errors.image %></p>
+          <% } %>
         </div>
       </div>
 
-      <label for="description">Описание</label>
+      <label for="description">
+        Описание <span class="form__hint">10–300 символов</span>
+        <span class="form__count" id="count-description">0 / 300</span>
+      </label>
       <textarea
         id="description"
         name="description"
         required
+        minlength="10"
+        maxlength="300"
         placeholder="Коротко о мероприятии"
-      ></textarea>
+      ><%= values.description || '' %></textarea>
+      <% if (errors.description) { %>
+        <p class="form__error"><%= errors.description %></p>
+      <% } %>
 
       <button class="btn" type="submit">добавить</button>
     </form>
   </div>
 </section>
+
+<script src="/js/form.js" defer></script>
 
 <%- include('partials/footer') %>

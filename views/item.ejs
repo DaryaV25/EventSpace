@@ -20,7 +20,9 @@
           <li>Адрес: <%= event.address %></li>
         </ul>
 
-        <p class="item__price">Стоимость: <%= event.price %> BYN</p>
+        <p class="item__price">
+          Стоимость: <%= Number(event.price).toFixed(2).replace('.', ',') %> BYN
+        </p>
       </div>
     </article>
   </div>

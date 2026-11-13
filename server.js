@@ -6,6 +6,7 @@ const events = require('./data/events');
 const logger = require('./middleware/logger');
 const { auth, requireAuth } = require('./middleware/auth');
 const { notFound, errorHandler } = require('./middleware/errors');
+const validateEvent = require('./middleware/validateEvent');
 
 const app = express();
 const PORT = 3000;
@@ -42,12 +43,12 @@ app.get('/item/:id', (req, res, next) => {
 
 // Форма добавления мероприятия (только для авторизованных)
 app.get('/add', requireAuth, (req, res) => {
-  res.render('add', { title: 'Добавить мероприятие' });
+  res.render('add', { title: 'Добавить мероприятие', errors: {}, values: {} });
 });
 
-// Обработка формы — добавление в массив и редирект на главную
-app.post('/add', requireAuth, (req, res) => {
-  events.add(req.body);
+// Обработка формы: проверка данных, добавление в массив, редирект на главную
+app.post('/add', requireAuth, validateEvent, (req, res) => {
+  events.add(req.event);
   res.redirect('/' + res.locals.authQuery);
 });
 
@@ -59,6 +60,10 @@ app.get('/login', (req, res) => {
 // Журнал событий из базы данных (только для авторизованных)
 app.get('/logs', requireAuth, (req, res) => {
   res.render('logs', { title: 'Журнал событий', logs: db.getLogs() });
+});
+
+app.get('/error', (req, res, next) => {
+  next(new Error('Тестовая ошибка сервера'));
 });
 
 // ---------- 5. Обработка ошибок ----------
